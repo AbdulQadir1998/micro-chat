@@ -1,0 +1,27 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "3000:3000"
+    depends_on:
+      - auth-service
+      - profile-service
+      - chat-service
+
+  auth-service:
+    build: ./auth-service
+    ports:
+      - "3001:3001"
+
+  profile-service:
+    build: ./profile-service
+    ports:
+      - "3002:3002"
+
+  chat-service:
+    build: ./chat-service
+    ports:
+      - "3003:3003"
